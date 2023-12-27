@@ -1,7 +1,7 @@
 public class Compression {
 
     public static String compress(String input) {
-        if(input == null) throw new IllegalArgumentException("Input isn't compressed correctly.");
+        if(input == null) return null;
 
         char[] charArray = input.toCharArray();
         StringBuilder result = new StringBuilder();
