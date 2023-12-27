@@ -1,6 +1,8 @@
 public class Compression {
 
     public static String compress(String input) {
+        if(input == null) throw new IllegalArgumentException("Input isn't compressed correctly.");
+
         char[] charArray = input.toCharArray();
         StringBuilder result = new StringBuilder();
 
@@ -25,6 +27,8 @@ public class Compression {
     }
 
     public static String decompress(String input) {
+        if(input == null) throw new IllegalArgumentException("Input isn't compressed correctly.");
+
         char[] charArray = input.toCharArray();
         StringBuilder result = new StringBuilder();
 
@@ -56,9 +60,7 @@ public class Compression {
             if(digitString.toString().isEmpty()) {
                 throw new IllegalArgumentException("Input isn't compressed correctly.");
             } else {
-                for(int j = 0; j < Integer.parseInt(digitString.toString()); j++) {
-                    result.append(character);
-                }
+                result.append(String.valueOf(character).repeat(Math.max(0, Integer.parseInt(digitString.toString()))));
             }
 
         }

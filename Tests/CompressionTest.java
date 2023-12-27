@@ -1,13 +1,14 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class CompressionTest {
-    private String[] test1 = {"AAAAABBB#####", "A±5B±3#±5"};
-    private String[] test2 = {"AAAAA±BBB±±#####ABABABABAB", "A±5±±1B±3±±2#±5A±1B±1A±1B±1A±1B±1A±1B±1A±1B±1"};
+    final private String[] test1 = {"AAAAABBB#####", "A±5B±3#±5"};
+    final private String[] test2 = {"AAAAA±BBB±±#####ABABABABAB", "A±5±±1B±3±±2#±5A±1B±1A±1B±1A±1B±1A±1B±1A±1B±1"};
 
-    private String[] test3 = {"AAAAAAAAAAA±BC", "A±11±±1B±1C±1"};
+    final private String[] test3 = {"AAAAAAAAAAA±BC", "A±11±±1B±1C±1"};
+
+    final private String[] test4 = {"", ""};
 
     @Test
     public void compressTest1() {
@@ -25,6 +26,11 @@ class CompressionTest {
     }
 
     @Test
+    public void compressTest4() {
+        assertEquals(Compression.compress(test4[0]), test4[1]);
+    }
+
+    @Test
     public void decompressTest1() {
         assertEquals(Compression.decompress(test1[1]), test1[0]);
     }
@@ -37,5 +43,10 @@ class CompressionTest {
     @Test
     public void decompressTest3() {
         assertEquals(Compression.decompress(test3[1]), test3[0]);
+    }
+
+    @Test
+    public void decompressTest4() {
+        assertEquals(Compression.decompress(test4[1]), test4[0]);
     }
 }
