@@ -33,11 +33,12 @@ public class Compression {
         StringBuilder result = new StringBuilder();
 
         char character;
+        StringBuilder digitString;
         for(int i = 0; i < charArray.length; i++) {
             character = charArray[i];
             if(charArray[i+1] != 177) throw new IllegalArgumentException("Input isn't compressed correctly.");
 
-            StringBuilder digitString = new StringBuilder();
+            digitString = new StringBuilder();
 
             for(int j = i + 2; j < charArray.length; j++) {
                 if(Character.isDigit(charArray[j])) {
